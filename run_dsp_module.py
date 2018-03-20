@@ -38,7 +38,7 @@ waveformNumeric = []
 for x in waveformAlpha:
     print(f'The value of x is {x}')
     if(x != ''):
-        print(float(x))
+#        print(float(x))
         waveformNumeric.append(float(x))
         
 
@@ -46,5 +46,25 @@ for x in waveformAlpha:
         
 waveformArray = np.array(waveformNumeric)
 
-plt.plot(waveformArray)
-plt.xlim(0, 150.0)
+#plt.style.use('sineplotstyle')
+#plt.plot(waveformArray)
+#plt.xlim(0, 150.0)
+
+from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+from matplotlib.figure import Figure
+
+fig = Figure()
+# A canvas must be manually attached to the figure (pyplot would automatically
+# do it).  This is done by instantiating the canvas with the figure as
+# argument.
+FigureCanvas(fig)
+ax = fig.add_subplot(111)
+#ax.plot([1, 2, 3])
+ax.set_title('Waveform')
+ax.grid(True, which='both')
+ax.set_xlabel('time')
+ax.set_ylabel('volts')
+ax.plot(waveformArray)
+ax.set_xlim(0,200)
+ax.minorticks_on()
+display(fig)
