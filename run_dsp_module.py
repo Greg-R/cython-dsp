@@ -53,7 +53,9 @@ waveformArray = np.array(waveformNumeric)
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 from matplotlib.figure import Figure
 
-#plt.style.use('sineplotstyle')
+#  Could not get default style sheet in ~/.config/matplotlib to work!
+#  So use the local file:
+plt.style.use('sineplotstyle')
 
 #fig = Figure(figsize=(12,10))
 fig = Figure()
@@ -71,8 +73,6 @@ ax.plot(waveformArray)
 ax.set_xlim(0,200)
 ax.minorticks_on()
 display(fig)
-
-#import matplotlib.backends.backend_pdf.FigureCanvas
 
 from matplotlib.backends.backend_pdf import PdfPages
 
