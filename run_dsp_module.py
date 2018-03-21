@@ -53,6 +53,9 @@ waveformArray = np.array(waveformNumeric)
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 from matplotlib.figure import Figure
 
+#plt.style.use('sineplotstyle')
+
+#fig = Figure(figsize=(12,10))
 fig = Figure()
 # A canvas must be manually attached to the figure (pyplot would automatically
 # do it).  This is done by instantiating the canvas with the figure as
@@ -68,3 +71,17 @@ ax.plot(waveformArray)
 ax.set_xlim(0,200)
 ax.minorticks_on()
 display(fig)
+
+#import matplotlib.backends.backend_pdf.FigureCanvas
+
+from matplotlib.backends.backend_pdf import PdfPages
+
+with PdfPages('foo.pdf') as pdf:
+     # As many times as you like, create a figure fig and save it:
+ #    fig = plt.figure()
+ #    pdf.savefig(fig)
+     # When no figure is specified the current figure is saved
+     pdf.savefig(fig)
+     
+import matplotlib as plt     
+print(plt.get_configdir())
